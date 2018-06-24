@@ -1,4 +1,30 @@
 <h1>Listing restaurants</h1>
+<%= form_tag restaurants_path, method: :get do %>
+  <div class="input-group">
+    <%= text_field_tag :q, "", class: "form-control" %>
+    <span class="input-group-btn">
+      <%= submit_tag "Search", class: "btn btn-default" %>
+    </span>
+  </div>
+<% end %>
+
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Street</th>
+    <th>City</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+    <td><%= restaurant.name %></td>
+    <td><%= restaurant.street %></td>
+    <td><%= restaurant.city %></td>
+    <td><%= link_to 'Show', restaurant_path(restaurant) %></td>
+    </tr>
+<% end %>
+</table>
 
 <p>
 <%= link_to 'Add new restaurant', new_restaurant_path, class: 'btn btn-secondary' %> 

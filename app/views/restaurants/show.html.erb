@@ -2,6 +2,10 @@
 
 <p>
   <strong>Address:</strong>
+  <br>
   <%= @restaurant.street %>
-  <%= @restaurant.city %>
+  <br>
+  <%= @restaurant.city.name %>
 </p>
+
+<%= link_to 'Back', restaurants_path, class: 'btn btn-secondary' %>

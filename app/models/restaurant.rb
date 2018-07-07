@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+  has_many :favourites
+  has_many :favourites_by, through: :favourites, source: :user
   belongs_to :user
   belongs_to :city
   validates :name, presence: true

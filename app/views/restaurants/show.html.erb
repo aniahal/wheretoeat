@@ -8,4 +8,9 @@
   <%= @restaurant.city %>
 </p>
 
+<%= link_to(restaurant_favourites_path(@restaurant), method: :post) do %>
+  <%= icon('far', 'heart', base: "circle", class: "fa-2x") %>
+  <% end %>
+
+
 <%= link_to 'Back', restaurants_path, class: 'btn btn-secondary' %>

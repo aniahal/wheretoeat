@@ -4,15 +4,22 @@
     <title>Where To Eat?</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav class="navbar navbar-light" style="background-color: #fd7e14;">  
-      <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
+    <nav class="navbar navbar-light" style="background-color: #fd7e14;"> 
+      <ul class="navbar-nav mr-auto"> 
+        <li class="nav-item">
+          <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
       <span class="navbar-text">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="favourite_index_path">Favourites</a>
+        </li>
+        </ul>
         <% if user_signed_in? %>
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>
         <% else %>

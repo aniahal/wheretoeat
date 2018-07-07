@@ -1,6 +1,10 @@
 class RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    if params[:q].present?
+      @restaurants = Restaurant.where('? = any(tags)', params[:q])
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def new
@@ -23,6 +27,6 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :street, :city_id)
+    params.require(:restaurant).permit(:name, :street, :city_id, :tags)
   end
 end

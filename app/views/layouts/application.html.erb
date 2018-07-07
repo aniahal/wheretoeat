@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark bg-primary">
-      <%= link_to 'Blog', root_path, class: 'navbar-brand'%>
+    <nav class="navbar navbar-light" style="background-color: #fd7e14;">  
+      <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
       <span class="navbar-text">
         <% if user_signed_in? %>
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark' %>

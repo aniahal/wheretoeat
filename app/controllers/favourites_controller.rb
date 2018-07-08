@@ -1,5 +1,13 @@
 class FavouritesController < ApplicationController
-  before_action :find_restaurant
+  before_action :find_restaurant, except: [:index]
+
+  def index
+    if params[:q].present?
+      @restaurants = current_user.favourites_restaurants.joins(:city).where(':q = any(restaurants.tags) or restaurants.name ilike(:q) or cities.name ilike(:q)', q: params[:q])
+    else
+      @restaurants = current_user.favourites_restaurants
+    end
+  end
 
   def create
     unless @restaurant.favourites_by.include?(current_user)

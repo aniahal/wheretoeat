@@ -21,7 +21,10 @@
       <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Favourites</a>
+        <%= link_to 'Favourites', favourites_path, class: 'nav-link' %>
+        </li>
+        <li>
+        <a class="nav-link" href="<%= favourites_path %>">Favourites</a>
       </li>
     </ul>
   </div>

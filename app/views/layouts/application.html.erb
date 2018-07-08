@@ -17,15 +17,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-      <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
+      <li class="nav-item">
+      <%= link_to 'Restaurants', root_path, class: 'nav-link'%>
       </li>
       <li class="nav-item">
         <%= link_to 'Favourites', favourites_path, class: 'nav-link' %>
         </li>
-        <li>
-        <a class="nav-link" href="<%= favourites_path %>">Favourites</a>
-      </li>
     </ul>
   </div>
     <% if user_signed_in? %>

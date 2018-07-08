@@ -7,6 +7,7 @@ class Restaurant < ApplicationRecord
   validates :street, presence: true
   validates :tags, presence: true
 
+  has_one_attached :image
 
   def tags=(value)
     super(sanitize_tags(value))

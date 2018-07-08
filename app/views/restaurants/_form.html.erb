@@ -1,0 +1,10 @@
+<%= simple_form_for @restaurant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :street %>
+  <%= f.input :tags, placeholder: 'what kind of cousine is it?' %>
+  <small id="emailHelp" class="form-text text-muted">Type tags separated by comma.</small>
+  <p><%= f.association :city, as: :select %></p>
+  <%= f.file_field :image %>
+  <br><br>
+<%= f.button :submit, "Save", class: "btn btn-warning" %>
+<% end %>

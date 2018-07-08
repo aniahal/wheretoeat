@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :find_restaurant, only: [:show, :update, :edit]
   def index
     if params[:q].present?
       @restaurants = Restaurant.joins(:city).where(':q = any(restaurants.tags) or restaurants.name ilike(:q) or cities.name ilike(:q)', q: params[:q])
@@ -21,13 +22,12 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
-    if @restaurant.update(article_params)
+    if @restaurant.update(restaurant_params)
       redirect_to @restaurant
-    else 
+    else
       render 'edit'
     end
   end
@@ -38,6 +38,11 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :street, :city_id, :tags)
+    params.require(:restaurant).permit(:name, :street, :city_id, :tags, :image)
   end
+
+  def find_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
+
 end

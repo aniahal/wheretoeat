@@ -1,4 +1,5 @@
 <h2>Your favourite restaurants</h2>
 
-
-<%= link_to 'Back', restaurants_path, class: 'btn btn-secondary' %>
+<%= render 'commons/restaurants', restaurants: @restaurants, search_path: favourites_path %>
+<br>
+<%= link_to 'Back to the full restaurants list', restaurants_path, class: 'btn btn-warning' %>

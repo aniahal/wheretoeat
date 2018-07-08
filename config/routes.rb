@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       post 'favourites', action: :create, controller: :favourites
     end
   end
+  resources :favourites, only: [:index]
 end

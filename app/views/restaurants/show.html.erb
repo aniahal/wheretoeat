@@ -1,4 +1,13 @@
-<h2><%= @restaurant.name %></h2>
+<h2><%= @restaurant.name %></h2> 
+<% unless @restaurant.favourites_by.include?(current_user) %>
+  <%= link_to(favourites_restaurant_path(@restaurant), method: :post) do %>
+    <%= icon('far', 'heart', base: "circle", class: "fa-2x", style: "color:#fc8e28") %>
+  <% end %>
+<% else %>
+  <%= link_to(favourites_restaurant_path(@restaurant), method: :delete) do %>
+    <%= icon('fas', 'heart', base: "circle", class: "fa-2x", style: "color:#fc8e28") %>
+  <% end %>
+<% end %>
 
 <p>
   <strong>Address:</strong>
@@ -6,17 +15,14 @@
   <%= @restaurant.street %>
   <br>
   <%= @restaurant.city.name %>
+  <br>
+  <strong>Tags:</strong>
+  <span class="badge badge-pill badge-warning"><%= @restaurant.tags.join(', ') %></span>
 </p>
 
-<% unless @restaurant.favourites_by.include?(current_user) %>
-  <%= link_to(favourites_restaurant_path(@restaurant), method: :post) do %>
-    <%= icon('far', 'heart', base: "circle", class: "fa-2x") %>
-  <% end %>
-<% else %>
-  <%= link_to(favourites_restaurant_path(@restaurant), method: :delete) do %>
-    <%= icon('fas', 'heart', base: "circle", class: "fa-2x") %>
-  <% end %>
+<br>
+
+<%= link_to 'Back', restaurants_path, class: 'btn btn-warning' %>
+<% if @restaurant.user == current_user %>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn btn-warning' %>
 <% end %>
-
-
-<%= link_to 'Back', restaurants_path, class: 'btn btn-secondary' %>

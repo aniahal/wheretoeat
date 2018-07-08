@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :restaurants
   has_many :favourites
-  has_many :favourites_restaurants, through: :favourite, source: :restaurant
+  has_many :favourites_restaurants, through: :favourites, source: :restaurant
 end

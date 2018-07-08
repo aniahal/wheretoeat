@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'restaurants#index'
   resources :restaurants do
-    resources :favourites, only: [:create, :destroy]
+    member do
+      delete 'favourites', action: :destroy, controller: :favourites
+      post 'favourites', action: :create, controller: :favourites
+    end
   end
 end

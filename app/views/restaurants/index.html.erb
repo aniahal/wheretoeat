@@ -27,7 +27,7 @@
                     <div class="media-body">
                         <h5 class="mt-0 mb-1"><%= restaurant.name %></h5>
                         <p><%= restaurant.street %></p>
-                        <p><%= restaurant.city %></p>
+                        <p><%= restaurant.city.name %></p>
                         <p><%= link_to 'Show', restaurant_path(restaurant) %></p>
                       <% end %>
                     </div>

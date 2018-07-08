@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   def index
     if params[:q].present?
-      @restaurants = Restaurant.where('? = any(tags)', params[:q])
+      @restaurants = Restaurant.joins(:city).where(':q = any(restaurants.tags) or restaurants.name ilike(:q) or cities.name ilike(:q)', q: params[:q])
     else
       @restaurants = Restaurant.all
     end

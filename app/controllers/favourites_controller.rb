@@ -9,14 +9,14 @@ class FavouritesController < ApplicationController
   end
 
   def destroy
-    like = Like.find_by!(user: current_user, restaurant: @restaurant)
-    like.destroy
+    favourite = Favourite.find_by!(user: current_user, restaurant: @restaurant)
+    favourite.destroy
     redirect_to @restaurant
-  end 
+  end
 
   private
 
   def find_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find(params[:id])
   end
 end

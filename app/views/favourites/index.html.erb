@@ -1,6 +1,4 @@
 <h2>Your favourite restaurants</h2>
-<%= if @current_user.favourites.include?(@restaurant) do %>
-  <%= restaurant.name %>
-<% end %>
+
 
 <%= link_to 'Back', restaurants_path, class: 'btn btn-secondary' %>

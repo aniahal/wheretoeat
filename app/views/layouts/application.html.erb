@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wheretoeat</title>
+    <title>Where To Eat?</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fd7e14;">
+  <a class="navbar-brand" href="#">WhereToEat</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+      <%= link_to 'Restaurants', root_path, class: 'navbar-brand'%>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Favourites</a>
+      </li>
+    </ul>
+  </div>
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-outline-light' %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-link' %>
+    <% end %>
+</nav>
+
+    <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
+

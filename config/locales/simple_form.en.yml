@@ -29,3 +29,7 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+    extension: 
+      image:
+        select: 'Select the file'
+        change: 'Change file'
